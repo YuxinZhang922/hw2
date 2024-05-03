@@ -271,14 +271,14 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-allmovies = Movie.all
-for everymovie in allmovies
-    title = everymovie["title"]
-    year_released = everymovie["year_released"]
-    rated = everymovie["rated"]
-    studio_id = everymovie["studio_id"]
-    studioname = Studio.find_by({"id" => studio_id})["name"]
-    puts "#{title}     #{year_released}     #{rated}     #{studioname}"
+all_movies = Movie.all
+for every_movie in all_movies
+    title = every_movie["title"]
+    year_released = every_movie["year_released"]
+    rated = every_movie["rated"]
+    studio_id = every_movie["studio_id"]
+    studio_name = Studio.find_by({"id" => studio_id})["name"]
+    puts "#{title}     #{year_released}     #{rated}     #{studio_name}"
 end
 # Prints a header for the cast output
 puts ""
@@ -288,10 +288,10 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
-allcasts = Role.all
-for everycast in allcasts
-    movietitle = Movie.find_by({"id" => everycast["movie_id"]})["title"]
-    actorname = Actor.find_by({"id" => everycast["actor_id"]})["name"]
-    character_name = everycast["character_name"]
-    puts "#{movietitle}     #{actorname}     #{character_name}"
+all_casts = Role.all
+for every_cast in all_casts
+    movie_title = Movie.find_by({"id" => every_cast["movie_id"]})["title"]
+    actor_name = Actor.find_by({"id" => every_cast["actor_id"]})["name"]
+    character_name = every_cast["character_name"]
+    puts "#{movie_title}     #{actor_name}     #{character_name}"
 end
