@@ -248,13 +248,13 @@ role.save
 role = Role.new
 role["movie_id"] = batman3["id"]
 role["actor_id"] = tom["id"]
-role["character_name"] = "John Blake"
+role["character_name"] = "Bane"
 role.save
 
 role = Role.new
 role["movie_id"] = batman3["id"]
 role["actor_id"] = joseph["id"]
-role["character_name"] = "Bane"
+role["character_name"] = "John Blake"
 role.save
 
 role = Role.new
@@ -293,5 +293,5 @@ for everycast in allcasts
     movietitle = Movie.find_by({"id" => everycast["movie_id"]})["title"]
     actorname = Actor.find_by({"id" => everycast["actor_id"]})["name"]
     character_name = everycast["character_name"]
-    puts "#{movietitle} #{actorname} #{character_name}"
+    puts "#{movietitle}     #{actorname}     #{character_name}"
 end
