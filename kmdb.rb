@@ -81,6 +81,13 @@ Actor.destroy_all
 Studio.destroy_all
 Role.destroy_all
 
+# Generate models and tables, according to the domain model.
+# TODO!
+
+
+# Insert data into the database that reflects the sample data shown above.
+# Do not use hard-coded foreign key IDs.
+# TODO!
 
 studio = Studio.new
 studio["name"] = "Warner Bros."
@@ -256,14 +263,6 @@ role["actor_id"] = anne["id"]
 role["character_name"] = "Selina Kyle"
 role.save
 
-# Generate models and tables, according to the domain model.
-# TODO!
-
-
-# Insert data into the database that reflects the sample data shown above.
-# Do not use hard-coded foreign key IDs.
-# TODO!
-
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
@@ -272,6 +271,15 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+allmovies = Movie.all
+for everymovie in allmovies
+    title = everymovie["title"]
+    year_released = everymovie["year_released"]
+    rated = everymovie["rated"]
+    studio_id = everymovie["studio_id"]
+    studioname = Studio.find_by({"id" => studio_id})["name"]
+    puts "#{title}     #{year_released}     #{rated}     #{studioname}"
+end
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
@@ -280,3 +288,10 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+allcasts = Role.all
+for everycast in allcasts
+    movietitle = Movie.find_by({"id" => everycast["movie_id"]})["title"]
+    actorname = Actor.find_by({"id" => everycast["actor_id"]})["name"]
+    character_name = everycast["character_name"]
+    puts "#{movietitle} #{actorname} #{character_name}"
+end
